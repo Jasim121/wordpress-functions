@@ -1,0 +1,299 @@
+<?php
+
+
+function load_stylesheet() {
+
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css','1.1','all');
+   
+
+    wp_enqueue_style( 'mincss', get_template_directory_uri() . '/assets/css/all.min.css','1.1','all');
+
+
+    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/css/fontawesome.min.css','1.1','all');
+
+
+    wp_enqueue_style( 'owlcarosel', get_template_directory_uri() . '/assets/css/owl.carousel.min.css','1.1','all');
+
+
+    wp_enqueue_style( 'owltheme', get_template_directory_uri() . '/assets/css/owl.theme.green.min.css','1.1','all');
+
+    
+    wp_enqueue_style( 'main_style', get_template_directory_uri() . '/assets/css/style.css','1.1','all');
+
+
+}
+   
+add_action( 'wp_enqueue_scripts', 'load_stylesheet' );
+
+
+
+
+function load_js(){
+
+    wp_enqueue_script( 'mainjs', get_template_directory_uri() . '/assets/js/main.js', array ( 'jquery' ), 1.1, true);
+
+
+    wp_enqueue_script( 'owl', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array ( 'jquery' ), 1.1, true);
+
+   wp_register_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', null, null, true );
+   wp_enqueue_script('bootstrap');
+
+
+  
+   wp_enqueue_script('jquery');
+
+
+   wp_register_script( 'poper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', null, null, true );
+   wp_enqueue_script('poper');
+
+
+   wp_register_script( 'fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css', null, null, true );
+   wp_enqueue_script('fontawesome');
+}
+
+add_action( 'wp_enqueue_scripts', 'load_js' );
+
+
+add_theme_support('menus');
+
+register_nav_menus(
+	array('main_menu'=>'Main Menu')
+);
+
+
+
+
+
+function Passion_post_type() {
+	$labels = array(
+		'name'                => _x( 'Passion', 'Post Type General Name', 'resturant' ),
+		'singular_name'       => _x( 'Passion', 'Post Type Singular Name', 'resturant' ),
+		'menu_name'           => __( 'Passion', 'resturant' ),
+		'parent_item_colon'   => __( 'Parent Passion', 'resturant' ),
+		'all_items'           => __( 'All Passion', 'resturant' ),
+		'view_item'           => __( 'View Passion', 'resturant' ),
+		'add_new_item'        => __( 'Add New Passion', 'resturant' ),
+		'add_new'             => __( 'Add New', 'resturant' ),
+		'edit_item'           => __( 'Edit Passion', 'resturant' ),
+		'update_item'         => __( 'Update Passion', 'resturant' ),
+		'search_items'        => __( 'Search Passion', 'resturant' ),
+		'not_found'           => __( 'Not Found', 'resturant' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'resturant' ),
+	);
+	$args = array(
+		'label'               => __( 'Passion', 'resturant' ),
+		'description'         => __( 'Passion news and reviews', 'resturant' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', ),
+		'taxonomies'          => array( 'genres' ),	
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+		'taxonomies'          => array( 'category' ),
+	);
+	register_post_type( 'Passion', $args );
+}
+add_action( 'init', 'Passion_post_type', 0 );
+
+
+
+
+
+
+function work_post_type() {
+	$labels = array(
+		'name'                => _x( 'work', 'Post Type General Name', 'resturant' ),
+		'singular_name'       => _x( 'work', 'Post Type Singular Name', 'resturant' ),
+		'menu_name'           => __( 'work', 'resturant' ),
+		'parent_item_colon'   => __( 'Parent work', 'resturant' ),
+		'all_items'           => __( 'All work', 'resturant' ),
+		'view_item'           => __( 'View work', 'resturant' ),
+		'add_new_item'        => __( 'Add New work', 'resturant' ),
+		'add_new'             => __( 'Add New', 'resturant' ),
+		'edit_item'           => __( 'Edit work', 'resturant' ),
+		'update_item'         => __( 'Update work', 'resturant' ),
+		'search_items'        => __( 'Search work', 'resturant' ),
+		'not_found'           => __( 'Not Found', 'resturant' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'resturant' ),
+	);
+	$args = array(
+		'label'               => __( 'work', 'resturant' ),
+		'description'         => __( 'work news and reviews', 'resturant' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', ),
+		'taxonomies'          => array( 'genres' ),	
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+		'taxonomies'          => array( 'category' ),
+	);
+	register_post_type( 'work', $args );
+}
+add_action( 'init', 'work_post_type', 0 );
+
+
+
+
+
+function carosel_post_type() {
+	$labels = array(
+		'name'                => _x( 'carosel', 'Post Type General Name', 'resturant' ),
+		'singular_name'       => _x( 'carosel', 'Post Type Singular Name', 'resturant' ),
+		'menu_name'           => __( 'carosel', 'resturant' ),
+		'parent_item_colon'   => __( 'Parent carosel', 'resturant' ),
+		'all_items'           => __( 'All carosel', 'resturant' ),
+		'view_item'           => __( 'View carosel', 'resturant' ),
+		'add_new_item'        => __( 'Add New carosel', 'resturant' ),
+		'add_new'             => __( 'Add New', 'resturant' ),
+		'edit_item'           => __( 'Edit carosel', 'resturant' ),
+		'update_item'         => __( 'Update carosel', 'resturant' ),
+		'search_items'        => __( 'Search carosel', 'resturant' ),
+		'not_found'           => __( 'Not Found', 'resturant' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'resturant' ),
+	);
+	$args = array(
+		'label'               => __( 'carosel', 'resturant' ),
+		'description'         => __( 'carosel news and reviews', 'resturant' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', ),
+		'taxonomies'          => array( 'genres' ),	
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+		'taxonomies'          => array( 'category' ),
+	);
+	register_post_type( 'carosel', $args );
+}
+add_action( 'init', 'carosel_post_type', 0 );
+
+
+
+
+function footer_post_type() {
+	$labels = array(
+		'name'                => _x( 'footer', 'Post Type General Name', 'resturant' ),
+		'singular_name'       => _x( 'footer', 'Post Type Singular Name', 'resturant' ),
+		'menu_name'           => __( 'footer', 'resturant' ),
+		'parent_item_colon'   => __( 'Parent footer', 'resturant' ),
+		'all_items'           => __( 'All footer', 'resturant' ),
+		'view_item'           => __( 'View footer', 'resturant' ),
+		'add_new_item'        => __( 'Add New footer', 'resturant' ),
+		'add_new'             => __( 'Add New', 'resturant' ),
+		'edit_item'           => __( 'Edit footer', 'resturant' ),
+		'update_item'         => __( 'Update footer', 'resturant' ),
+		'search_items'        => __( 'Search footer', 'resturant' ),
+		'not_found'           => __( 'Not Found', 'resturant' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'resturant' ),
+	);
+	$args = array(
+		'label'               => __( 'footer', 'resturant' ),
+		'description'         => __( 'footer news and reviews', 'resturant' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', ),
+		'taxonomies'          => array( 'genres' ),	
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+		'taxonomies'          => array( 'category' ),
+	);
+	register_post_type( 'footer', $args );
+}
+add_action( 'init', 'footer_post_type', 0 );
+
+
+
+
+function get_widgets(){
+
+}
+add_action( 'widgets_init', 'get_widgets');
+
+
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget 1', 'wpdev' ),
+        'id'            => 'footer-1',
+        'before_widget' => '<footer-text class="%1$s" class="widget %2$s">',
+        'after_widget'  => '</footer-text>',
+        'before_title'  => '<h5 class="widget-title">',
+        'after_title'   => '</h5>',
+    ) );
+
+
+      register_sidebar( array(
+        'name'          => __( 'Footer Widget 2', 'wpdev' ),
+        'id'            => 'footer-2',
+        'before_widget' => '<footer-text class="%1$s" class="widget %2$s">',
+        'after_widget'  => '</footer-text>',
+        'before_title'  => '<h5 class="widget-title">',
+        'after_title'   => '</h5>',
+    ) );
+
+
+        register_sidebar( array(
+        'name'          => __( 'Footer Widget 3', 'wpdev' ),
+        'id'            => 'footer-3',
+        'before_widget' => '<footer-text class="%1$s" class="widget %2$s">',
+        'after_widget'  => '</footer-text>',
+        'before_title'  => '<h5 class="widget-title">',
+        'after_title'   => '</h5>',
+    ) );
+
+
+        register_sidebar( array(
+        'name'          => __( 'Footer Widget 4', 'wpdev' ),
+        'id'            => 'footer-4',
+        'before_widget' => '<footer-text class="%1$s" class="widget %2$s">',
+        'after_widget'  => '</footer-text>',
+        'before_title'  => '<h5 class="widget-title">',
+        'after_title'   => '</h5>',
+    ) );
+
+add_theme_support('post-thumbnails')
+?>
+
+
+
+
+   
+    
+ 
